@@ -102,17 +102,7 @@ with tf.Session() as test:
 # In[33]:
 
 def compute_layer_style_cost(a_S, a_G):
-    """
-    Arguments:
-    a_S -- tensor of dimension (1, n_H, n_W, n_C), hidden layer activations representing style of the image S 
-    a_G -- tensor of dimension (1, n_H, n_W, n_C), hidden layer activations representing style of the image G
 
-    Returns: 
-    J_style_layer -- tensor representing a scalar value, style cost defined above by equation (2)
-    """
-
-    ### START CODE HERE ###
-    # Retrieve dimensions from a_G (≈1 line)
     m, n_H, n_W, n_C = a_G.get_shape().as_list()
 
     # Reshape the images to have them of shape (n_C, n_H*n_W) (≈2 lines)
@@ -177,22 +167,8 @@ def compute_style_cost(model, STYLE_LAYERS):
 # In[37]:
 
 def total_cost(J_content, J_style, alpha = 10, beta = 40):
-    """
-    Computes the total cost function
 
-    Arguments:
-    J_content -- content cost coded above
-    J_style -- style cost coded above
-    alpha -- hyperparameter weighting the importance of the content cost
-    beta -- hyperparameter weighting the importance of the style cost
-
-    Returns:
-    J -- total cost as defined by the formula above.
-    """
-
-    ### START CODE HERE ### (≈1 line)
     J = alpha * J_content + beta * J_style
-    ### END CODE HERE ###
 
     return J
 
